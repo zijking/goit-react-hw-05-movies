@@ -16,10 +16,9 @@
     "web-vitals": "^0.2.4",
     "yup": "^0.32.1"
   },
-  "homepage": "https://zijking.github.io/goit-react-hw-05-movies",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "netlify deploy -p",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

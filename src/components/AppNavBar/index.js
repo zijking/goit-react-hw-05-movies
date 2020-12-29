@@ -1,1 +1,1 @@
-export { defaulf } from './AppNavBar';
+export { default } from './AppNavBar';
