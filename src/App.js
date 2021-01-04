@@ -1,14 +1,16 @@
 import { Switch, Route } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import Container from './components/Container';
 import AppNav from './components/AppNavBar';
-import {
-  fetchTrending,
-  fetchSearch,
-  fetchMovie,
-  fetchCastAndCrew,
-  fetchRewvies,
-} from './services/movies-api';
+import HomePage from './components/HomePage';
+import MoviesPage from './components/MoviesPage';
+// import {
+//   fetchTrending,
+//   fetchSearch,
+//   fetchMovie,
+//   fetchCastAndCrew,
+//   fetchRewvies,
+// } from './services/movies-api';
 import './App.css';
 
 function App() {
@@ -21,9 +23,16 @@ function App() {
   return (
     <Container>
       <AppNav />
-      <div className="App">
-        <h1>Start</h1>
-      </div>
+
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+
+        <Route path="/movies">
+          <MoviesPage />
+        </Route>
+      </Switch>
     </Container>
   );
 }
