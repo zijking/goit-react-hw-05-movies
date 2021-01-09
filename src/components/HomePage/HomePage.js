@@ -8,14 +8,13 @@ import {
 } from '../../services/movies-api';
 
 import TrendingList from '../TrendingList';
-import { Form } from 'formik';
 
 function HomePage() {
   const [trendingList, setTrendingList] = useState([]);
 
   useEffect(() => {
     fetchTrending().then(r => {
-      console.log(r);
+      // console.log(r);
       setTrendingList(r.results);
     });
     return () => {
@@ -26,7 +25,7 @@ function HomePage() {
   return (
     <>
       <h1>Home Page</h1>
-      <TrendingList list={trendingList} />
+      {trendingList && <TrendingList list={trendingList} />}
     </>
   );
 }

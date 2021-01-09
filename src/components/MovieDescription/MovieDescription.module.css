@@ -1,0 +1,28 @@
+.movieContainer{
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.movieContainer p, .additionInfo p{
+    margin: 0;
+    padding: 0;
+}
+
+.moviePoster img{
+    max-height: 300px;
+}
+
+.movieDesc{
+    margin-left:20px;
+}
+
+.movieTitle{
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.additionInfo{
+
+}

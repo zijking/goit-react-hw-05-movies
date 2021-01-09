@@ -20,33 +20,33 @@ async function fetchWithErrorHandling(url = '', config = {}) {
 
 //список самых популярных фильмов на сегодня для создания коллекции на главной странице.
 export function fetchTrending() {
-  return fetchWithErrorHandling(`${BASE_URL}trending/all/day?api_key=${KEY}`);
+  return fetchWithErrorHandling(`${BASE_URL}trending/movie/day?api_key=${KEY}`);
 }
 
 //поиск кинофильма по ключевому слову на странице фильмов.
 export function fetchSearch(query, page = 1) {
   return fetchWithErrorHandling(
-    `${BASE_URL}search/movie?api_key=${KEY}&language=uk-UK&query=${query}&page=${page}&include_adult=false`,
+    `${BASE_URL}search/movie?api_key=${KEY}&language=uk-UA&query=${query}&page=${page}&include_adult=false`,
   );
 }
 
 //запрос полной информации о фильме для страницы кинофильма.
 export function fetchMovie(idMuvie) {
   return fetchWithErrorHandling(
-    `${BASE_URL}movie/${idMuvie}?api_key=${KEY}&language=uk`,
+    `${BASE_URL}movie/${idMuvie}?api_key=${KEY}&language=uk-UA`,
   );
 }
 
 //запрос информации о актёрском составе для страницы кинофильма
 export function fetchCastAndCrew(idMuvie) {
   return fetchWithErrorHandling(
-    `${BASE_URL}movie/${idMuvie}/credits?api_key=${KEY}&language=uk`,
+    `${BASE_URL}movie/${idMuvie}/credits?api_key=${KEY}&language=uk-UA`,
   );
 }
 
 //запрос обзоров для страницы кинофильма
 export function fetchRewvies(idMuvie, page = 1) {
   return fetchWithErrorHandling(
-    `${BASE_URL}movie/${idMuvie}/reviews?api_key=${KEY}&language=en-US&page=${page}`,
+    `${BASE_URL}movie/${idMuvie}/reviews?api_key=${KEY}&language=uk-UA&page=${page}`,
   );
 }

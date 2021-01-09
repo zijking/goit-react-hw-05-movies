@@ -4,6 +4,9 @@ import Container from './components/Container';
 import AppNav from './components/AppNavBar';
 import HomePage from './components/HomePage';
 import MoviesPage from './components/MoviesPage';
+import MovieDetailsPage from './components/MovieDetailsPage';
+
+import NotFound from './views/NotFound';
 // import {
 //   fetchTrending,
 //   fetchSearch,
@@ -29,8 +32,16 @@ function App() {
           <HomePage />
         </Route>
 
-        <Route path="/movies">
+        <Route path="/movies" exact>
           <MoviesPage />
+        </Route>
+
+        <Route path="/movies/:movieId">
+          <MovieDetailsPage />
+        </Route>
+
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </Container>
