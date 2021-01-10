@@ -1,4 +1,4 @@
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function TrendingList({ list }) {
   // const match = useRouteMatch();
   // console.log(match);

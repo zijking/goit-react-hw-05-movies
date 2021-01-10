@@ -1,4 +1,4 @@
-import { NavLink, useRouteMatch, Route, useParams } from 'react-router-dom';
+import { NavLink, useRouteMatch, Route } from 'react-router-dom';
 import s from './MovieDescription.module.css';
 import Cast from '../Cast';
 import Reviews from '../Reviews';
@@ -6,7 +6,7 @@ import Reviews from '../Reviews';
 
 function MovieDescription({ poster, title, desc, genres, average }) {
   const baseUrl = 'https://image.tmdb.org/t/p/w500';
-  const { movieId } = useParams();
+  // const { movieId } = useParams();
   const { url } = useRouteMatch();
   // console.log(url);
   // console.log(movieId);
