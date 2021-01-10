@@ -15,15 +15,37 @@ function Reviews() {
 
   useEffect(() => {
     fetchRewvies(movieId).then(r => {
-      //   console.log(r);
-      setReviews(r.results);
+      // console.log(r);
+      const rez = r.results;
+      if (rez.length === 0) {
+        setReviews(null);
+      } else {
+        setReviews(rez);
+      }
     });
     return () => {};
   }, [movieId]);
 
-  console.log(reviews);
+  // console.log(reviews);
 
-  return <>{'No reviews'} </>;
+  return (
+    <>
+      {(reviews && (
+        <ul>
+          {reviews.map(t => {
+            return (
+              <li>
+                <p>
+                  <b>{t.author}</b> {t.content}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      )) ||
+        "We don't have any reviews for this movie."}
+    </>
+  );
 }
 
 export default Reviews;

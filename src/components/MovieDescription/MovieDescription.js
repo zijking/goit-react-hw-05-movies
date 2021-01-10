@@ -1,4 +1,4 @@
-import { NavLink, useRouteMatch, Route } from 'react-router-dom';
+import { NavLink, useRouteMatch, Route, Switch } from 'react-router-dom';
 import s from './MovieDescription.module.css';
 import Cast from '../Cast';
 import Reviews from '../Reviews';
@@ -40,12 +40,14 @@ function MovieDescription({ poster, title, desc, genres, average }) {
         </p>
       </div>
       <hr />
-      <Route path={`/movies/:movieId/Cast`}>
-        <Cast />
-      </Route>
-      <Route path={`/movies/:movieId/Rewies`}>
-        <Reviews />
-      </Route>
+      <Switch>
+        <Route path={`/movies/:movieId/Cast`}>
+          <Cast />
+        </Route>
+        <Route path={`/movies/:movieId/Rewies`}>
+          <Reviews />
+        </Route>
+      </Switch>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function FormSearch({ onSubmit }) {
-  const [searchWord, setSearchWord] = useState('batman');
+  const [searchWord, setSearchWord] = useState('');
   const onChangeHandel = e => {
     // console.log(e.target.value);
     setSearchWord(e.target.value);

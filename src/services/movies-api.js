@@ -47,6 +47,6 @@ export function fetchCastAndCrew(idMuvie) {
 //запрос обзоров для страницы кинофильма
 export function fetchRewvies(idMuvie, page = 1) {
   return fetchWithErrorHandling(
-    `${BASE_URL}movie/${idMuvie}/reviews?api_key=${KEY}&language=uk-UA&page=${page}`,
+    `${BASE_URL}movie/${idMuvie}/reviews?api_key=${KEY}&language=ue-US&page=${page}`,
   );
 }
