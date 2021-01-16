@@ -1,4 +1,11 @@
-import { NavLink, useRouteMatch, Route, Switch } from 'react-router-dom';
+import {
+  NavLink,
+  useRouteMatch,
+  Route,
+  Switch,
+  // Link,
+  useHistory,
+} from 'react-router-dom';
 import s from './MovieDescription.module.css';
 import Cast from '../Cast';
 import Reviews from '../Reviews';
@@ -6,12 +13,21 @@ import Reviews from '../Reviews';
 
 function MovieDescription({ poster, title, desc, genres, average }) {
   const baseUrl = 'https://image.tmdb.org/t/p/w500';
+  const history = useHistory();
   // const { movieId } = useParams();
   const { url } = useRouteMatch();
+
   // console.log(url);
-  // console.log(movieId);
+  // console.log(history);
+
+  const goBack = () => {
+    history.goBack();
+  };
   return (
     <div>
+      <button className={s.goBackBtn} onClick={goBack}>
+        go back
+      </button>
       <div className={s.movieContainer}>
         <div className={s.moviePoster}>
           <img src={`${baseUrl}${poster}`} alt={title} />

@@ -34,7 +34,7 @@ function Reviews() {
         <ul>
           {reviews.map(t => {
             return (
-              <li>
+              <li key={t.id}>
                 <p>
                   <b>{t.author}</b> {t.content}
                 </p>

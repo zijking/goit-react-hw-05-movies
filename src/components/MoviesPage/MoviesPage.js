@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import FormSearch from '../FormSearch';
 import {
@@ -12,9 +12,20 @@ import {
 } from '../../services/movies-api';
 
 function MoviesPage() {
-  const [seWord, setSeWord] = useState('');
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get('query') ?? '';
+
+  const [seWord, setSeWord] = useState(query);
   const [movies, setMovies] = useState(null);
+  const history = useHistory();
+
+  // console.log(history);
+
   const firstStart = useRef(false);
+
+  // const onSortOrderChange = seWord => {
+  //   history.push({ ...location, search: `query=${seWord}` });
+  // };
 
   const handelSubmit = searchWord => {
     // console.log('Submit: ', searchWord);
@@ -22,20 +33,23 @@ function MoviesPage() {
   };
 
   useEffect(() => {
-    if (!firstStart.current) {
+    if (!firstStart.current && seWord === '') {
       firstStart.current = true;
       return;
     }
     if (seWord.length <= 2) {
       return;
     }
+
     // console.log('fetch');
+    history.push({ ...location, search: `query=${seWord}` });
     fetchSearch(seWord).then(r => {
       // console.log(r);
       setMovies(r.results);
     });
 
     return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seWord]);
 
   return (
