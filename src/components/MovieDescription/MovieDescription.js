@@ -5,7 +5,10 @@ import {
   Switch,
   // Link,
   useHistory,
+  useLocation,
 } from 'react-router-dom';
+
+import { useRef } from 'react';
 import s from './MovieDescription.module.css';
 import Cast from '../Cast';
 import Reviews from '../Reviews';
@@ -14,14 +17,21 @@ import Reviews from '../Reviews';
 function MovieDescription({ poster, title, desc, genres, average }) {
   const baseUrl = 'https://image.tmdb.org/t/p/w500';
   const history = useHistory();
+  const location = useLocation();
   // const { movieId } = useParams();
   const { url } = useRouteMatch();
+  const ref = useRef(location?.state?.from?.search ?? '');
+  const urlF = useRef(location?.state?.from?.pathname ?? '/');
 
   // console.log(url);
+  // console.log(urlF);
+  // console.log('ref: ', ref);
+  // console.log(location);
   // console.log(history);
 
   const goBack = () => {
-    history.goBack();
+    // history.push(location?.state?.from ?? ref.current);
+    history.push({ ...location, pathname: urlF.current, search: ref.current });
   };
   return (
     <div>

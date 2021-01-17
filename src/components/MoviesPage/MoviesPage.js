@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 
 import FormSearch from '../FormSearch';
 import {
@@ -13,19 +13,18 @@ import {
 
 function MoviesPage() {
   const location = useLocation();
+  const { url } = useRouteMatch();
+
   const query = new URLSearchParams(location.search).get('query') ?? '';
 
   const [seWord, setSeWord] = useState(query);
   const [movies, setMovies] = useState(null);
-  const history = useHistory();
 
-  // console.log(history);
+  const history = useHistory();
 
   const firstStart = useRef(false);
 
-  // const onSortOrderChange = seWord => {
-  //   history.push({ ...location, search: `query=${seWord}` });
-  // };
+  // console.log('movipage: ', location);
 
   const handelSubmit = searchWord => {
     // console.log('Submit: ', searchWord);
@@ -62,7 +61,14 @@ function MoviesPage() {
           {movies.map(t => {
             return (
               <li key={t.id}>
-                <Link to={`/movies/${t.id}`}>{t.title}</Link>
+                <Link
+                  to={{
+                    pathname: `${url}/${t.id}`,
+                    state: { from: location },
+                  }}
+                >
+                  {t.title}
+                </Link>
               </li>
             );
           })}
